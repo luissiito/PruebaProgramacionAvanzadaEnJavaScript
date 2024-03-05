@@ -14,16 +14,15 @@ function cargarInformacionAlModal(){
     const h5Comentarios = document.createElement('h5');
     const pComentarios = document.createElement('p');
     const botonCerrar = document.createElement('button');
+    
     imagen.src = animal.getSrcDeLaImagen();
     pEdad.textContent = animal.getEdad();
     h5Comentarios.textContent = 'Comentarios';
     pComentarios.textContent = animal.getComentarios();
     botonCerrar.textContent = 'CERRAR';
-    botonCerrar.classList.add('botonCerrar');
+    botonCerrar.classList.add('botonCerrar');    
+    botonCerrar.addEventListener('click', ()=> ocultarModal());
     modalBody.append(imagen, pEdad, h5Comentarios, pComentarios, botonCerrar);
-    botonCerrar.addEventListener('click', function(){
-        ocultarModal();
-    });
 }
 
 function mostrarModal(){

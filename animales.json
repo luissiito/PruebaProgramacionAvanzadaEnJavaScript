@@ -25,6 +25,11 @@
       "name": "Serpiente",
       "imagen": "Serpiente.jpg",
       "sonido":"Siseo.mp3"
+    },  
+    {
+      "name": "Delfin",
+      "imagen": "Delfin.png",
+      "sonido":"Silbido.mp3"
     }   
   ]
 }

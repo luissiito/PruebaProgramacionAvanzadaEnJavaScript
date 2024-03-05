@@ -18,6 +18,7 @@ function añadirEventoClickAlBotonAgregar(){
     botonAgregar.addEventListener('click', function (){
         animal = crearAnimal();        
         insertarCard(animal);  
+        limpiarFormulario();
     });
 }
 
@@ -56,6 +57,13 @@ export function iniciarEventosClick(){
     iniciarCard();
 }
 
+function limpiarFormulario(){
+    selectAnimal.value = selectAnimal.options[0].text;
+    selectEdadEstimada.value = selectEdadEstimada.options[0].text;
+    document.querySelector('textarea').value = '';
+    imagenAnimal.remove();
+}
+
 function mostrarImagenAnimalEnElPreview(opcionElegida){  
     switch(opcionElegida){
         case 'Aguila' : imagenAnimal.src = `${relativePath}/assets/imgs/${animales[0].imagen}`;
@@ -71,6 +79,9 @@ function mostrarImagenAnimalEnElPreview(opcionElegida){
                         document.querySelector('#preview').appendChild(imagenAnimal);
                         break;
         case 'Serpiente' : imagenAnimal.src = `${relativePath}/assets/imgs/${animales[4].imagen}`;
+                        document.querySelector('#preview').appendChild(imagenAnimal);
+                        break;
+        case 'Delfin' : imagenAnimal.src = `${relativePath}/assets/imgs/${animales[5].imagen}`;
                         document.querySelector('#preview').appendChild(imagenAnimal);
                         break;
     }
@@ -91,6 +102,8 @@ function setSrcSonidoSegunAnimal(animal){
         case 'Oso': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[3].sonido}`;
             break;
         case 'Serpiente': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[4].sonido}`;
+            break;
+        case 'Delfín': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[5].sonido}`;
             break;
         default: console.log('el audio no ha recibido el src'); break;
     }
