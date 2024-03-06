@@ -85,8 +85,13 @@ body {
   height: 15em;
 }
 
-.modal p{
-  margin: 0;
+.modal :is(p, h5){
+  font-size: 1.2em;
+  margin: .2em;
+}
+.modal h5{
+  font-size: 1.4em;
+  color: #ffc107;
 }
 
 .modal .botonCerrar{
