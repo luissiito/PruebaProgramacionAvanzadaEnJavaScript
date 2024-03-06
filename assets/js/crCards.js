@@ -1,45 +1,56 @@
-import {animal} from './crFormulario.js'
+import Card from './Card.js';
 import { añadirEventoClickAlBotonCerrar } from './crModals.js';
 
-function añadirEventoClickALaCard(){
-    document.querySelector('.card').addEventListener('click', function (){
-        mostrarModal();
-    });
-}
+const modalBody = document.querySelector('.modal-body');
+const imagen = document.createElement('img');
+const pEdad = document.createElement('p');
+const h5Comentarios = document.createElement('h5');
+const pComentarios = document.createElement('p');
+const botonCerrar = document.createElement('button');
+let cards = [];
+let contadorDeCards = 0;
 
-function cargarInformacionAlModal(){
-    const modalBody = document.querySelector('.modal-body');
-    const imagen = document.createElement('img');
-    const pEdad = document.createElement('p');
-    const h5Comentarios = document.createElement('h5');
-    const pComentarios = document.createElement('p');
-    const botonCerrar = document.createElement('button');
-    
-    imagen.src = animal.getSrcDeLaImagen();
-    pEdad.textContent = animal.getEdad();
+function cargarInformacionAlModal(idCard){ 
+    console.log(idCard)
+    console.log(cards[0])
+    imagen.src = cards[idCard].getAnimal().getSrcDeLaImagen();
+    pEdad.textContent = cards[idCard].getAnimal().getEdad();
     h5Comentarios.textContent = 'Comentarios';
-    pComentarios.textContent = animal.getComentarios();
+    pComentarios.textContent = cards[idCard].getAnimal().getComentarios();
     botonCerrar.textContent = 'CERRAR';
     botonCerrar.classList.add('botonCerrar');    
     botonCerrar.addEventListener('click', ()=> ocultarModal());
     modalBody.append(imagen, pEdad, h5Comentarios, pComentarios, botonCerrar);
 }
 
-function mostrarModal(){
+export function insertarCard(animal){    
+    const card = new Card(animal);
+    card.setAnimal(animal);
+    card.getContenedor().classList.add('card');
+    card.getContenedor().setAttribute('id', contadorDeCards);
+    card.getImagen().src = animal.getSrcDeLaImagen();
+    card.getContenedor().addEventListener('click', function(){mostrarModal(this)});
+    contadorDeCards++;
+    cards.push(card);
+    document.querySelector('#Animales').appendChild(card.getContenedor());
+}
+
+function mostrarModal(card){
     limpiarModalBody();
-    cargarInformacionAlModal();     
+    cargarInformacionAlModal(card.id);     
     document.querySelector('.modal').classList.add('showModal');
     document.querySelector('.modal').classList.remove('ocultarModal');
 }
+
 function ocultarModal(){   
     document.querySelector('.modal').classList.add('ocultarModal');
     document.querySelector('.modal').classList.remove('showModal');
 }
 
-export function iniciarCard(){
-    añadirEventoClickALaCard();      
-}
-
 function limpiarModalBody(){
-    document.querySelector('.modal .modal-body').innerHTML = '';
+    imagen.remove();
+    pEdad.remove();
+    h5Comentarios.remove();
+    pComentarios.remove();
+    botonCerrar.remove();    
 }
