@@ -1,4 +1,7 @@
 
+import ModuloApi from './ModuloApi.js';
+import ModuloCards from './ModuloCards.js';
+import ModuloModals from './ModuloModals.js';
 import Animal from './Animal.js';
 import Aguila from './Aguila.js';
 import Leon from './Leon.js';
@@ -8,13 +11,12 @@ import Serpiente from './Serpiente.js';
 import Caballo from './Caballo.js';
 import Cerdo from './Cerdo.js';
 import Delfin from './Delfin.js';
-import ModuloApi from './ModuloApi.js';
-import { insertarCard } from './crCards.js';
 
 const animales = await ModuloApi.getAnimalsFromApi();
 const botonAgregar = document.querySelector('#btnRegistrar');
 const selectAnimal = document.querySelector('#animal');
 const selectEdadEstimada = document.querySelector('#edad');
+const comentarios = document.querySelector('#comentarios');
 
 let animal = new Animal();
 let imagenAnimal = document.createElement('img');
@@ -25,10 +27,17 @@ function añadirEventoClickAlBotonAgregar(){
     botonAgregar.addEventListener('click', function (){
         crearAnimal();  
         if(getOpcionElegida() != 'Seleccione un animal'){
-            insertarCard(animal);  
-            limpiarFormulario();
-            setOpcionElegida('Seleccione un animal');
-        }      
+            opcionElegida = selectEdadEstimada.options[selectEdadEstimada.selectedIndex].text;
+            if(getOpcionElegida() != 'Seleccione un rango de años'){ 
+                if(comentarios.value != ''){ 
+                    ModuloCards.insertarCard(animal);  
+                    limpiarFormulario();
+                    setOpcionElegida('Seleccione un animal');  
+                } 
+                else{ ModuloModals.mostrarModalDeErrorDeComentario()}                           
+            }
+            else{ ModuloModals.mostrarModalDeErrorDeEdad();}
+        }else{ ModuloModals.mostrarModalDeErrorDeNombre();}      
     });
 }
 
@@ -105,6 +114,5 @@ function setSrcSonidoSegunAnimal(animal){
         case 'Delfín': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[5].sonido}`; break;
         case 'Cerdo': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[6].sonido}`; break;
         case 'Caballo': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[7].sonido}`; break;
-        default: console.log('el audio no ha recibido el src'); break;
     }
 }

@@ -11,5 +11,5 @@ export default (function ModuloApi() {
             console.error("Aquí hubo un error:", error);
           }
     }
-    return { getAnimalsFromApi }
+    return { getAnimalsFromApi };
 })();
