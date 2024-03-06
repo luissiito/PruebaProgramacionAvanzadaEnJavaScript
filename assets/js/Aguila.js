@@ -1,11 +1,12 @@
+
 import Animal from "./Animal.js";
 
-export default class Leon extends Animal{
+export default class Aguila extends Animal{
     constructor(nombre, edad, srcDeLaImagen, comentarios, sonido){
         super(nombre, edad, srcDeLaImagen, comentarios, sonido);        
     }
 
-    rugir(){
+    chillar(){
         super.getSonido().play();
     }
 }

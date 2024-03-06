@@ -28,8 +28,18 @@
     },  
     {
       "name": "Delfin",
-      "imagen": "Delfin.png",
+      "imagen": "Delfin.jpg",
       "sonido":"Silbido.mp3"
+    },  
+    {
+      "name": "Cerdo",
+      "imagen": "Cerdo.png",
+      "sonido":"GruñidoCerdo.mp3"
+    },  
+    {
+      "name": "Caballo",
+      "imagen": "Caballo.png",
+      "sonido":"Relincho.mp3"
     }   
   ]
 }

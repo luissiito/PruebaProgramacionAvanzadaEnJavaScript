@@ -41,7 +41,8 @@ body {
 }
 #Animales .card {
   opacity: .7;
-  width: 33.3%;
+  width: 31.8%;
+  margin: .4em;
 }
 #Animales .card:hover{
   cursor: pointer;
@@ -51,7 +52,7 @@ body {
   width: 100%;
 }
 
-#Animales div >div:hover {
+#Animales div > div:hover {
   box-shadow: 0px 1px 5px 1px;
 }
 #preview img {
@@ -90,7 +91,10 @@ body {
 
 .modal .botonCerrar{
   background-color: red;
+  border-radius: .4em;
   color: white;
+  font-size: 1.2em;
+  font-weight: bolder;
   margin: 1em;
   padding: .5em;
   position: relative;

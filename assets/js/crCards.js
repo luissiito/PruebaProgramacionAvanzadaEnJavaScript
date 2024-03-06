@@ -11,8 +11,6 @@ let cards = [];
 let contadorDeCards = 0;
 
 function cargarInformacionAlModal(idCard){ 
-    console.log(idCard)
-    console.log(cards[0])
     imagen.src = cards[idCard].getAnimal().getSrcDeLaImagen();
     pEdad.textContent = cards[idCard].getAnimal().getEdad();
     h5Comentarios.textContent = 'Comentarios';
