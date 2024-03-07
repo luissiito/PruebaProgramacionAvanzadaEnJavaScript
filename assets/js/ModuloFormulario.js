@@ -11,6 +11,9 @@ import Serpiente from './Serpiente.js';
 import Caballo from './Caballo.js';
 import Cerdo from './Cerdo.js';
 import Delfin from './Delfin.js';
+import Zebra from './Zebra.js';
+import Jirafa from './Jirafa.js';
+import Gato from './Gato.js';
 
 const animales = await ModuloApi.getAnimalsFromApi();
 
@@ -45,7 +48,7 @@ export default (function ModuloFormulario() {
 
     function añadirEventoClickAlSelectAnimal() {
         selectAnimal.addEventListener('click', function () {
-            setOpcionElegida(selectAnimal.options[selectAnimal.selectedIndex].value);
+            setOpcionElegida(selectAnimal.options[selectAnimal.selectedIndex].text);
             if (getOpcionElegida() != 'Seleccione un animal') {
                 mostrarImagenAnimalEnElPreview(getOpcionElegida());
             }
@@ -54,7 +57,7 @@ export default (function ModuloFormulario() {
 
     function crearAnimal() {
         let opcionElegida = selectAnimal.options[selectAnimal.selectedIndex].text;
-        const nombre = `${opcionElegida == 'Seleccione un animal' ? 'NO ASIGNADO' : opcionElegida} `;
+        const nombre = `${opcionElegida == 'Seleccione un animal' ? 'NO ASIGNADO' : opcionElegida}`;
         switch (opcionElegida) {
             case 'Águila': animal = new Aguila(); break;
             case 'León': animal = new Leon(); break;
@@ -64,12 +67,15 @@ export default (function ModuloFormulario() {
             case 'Delfín': animal = new Delfin(); break;
             case 'Cerdo': animal = new Cerdo(); break;
             case 'Caballo': animal = new Caballo(); break;
+            case 'Zebra': animal = new Zebra(); break;
+            case 'Jirafa': animal = new Jirafa(); break;
+            case 'Gato': animal = new Gato(); break;
         }
         animal.setNombre(nombre);
         animal.setEdad(selectEdadEstimada.options[selectEdadEstimada.selectedIndex].value);
         animal.setComentarios(document.querySelector('#comentarios').value);
         animal.setSrcDeLaImagen(imagenAnimal.src);
-        setSrcSonidoSegunAnimal(animal);
+        setSrcDelSonidoDelAnimal(animal);
     }
 
     function getOpcionElegida() {
@@ -89,15 +95,10 @@ export default (function ModuloFormulario() {
     }
 
     function mostrarImagenAnimalEnElPreview(opcionElegida) {
-        switch (opcionElegida) {
-            case 'Aguila': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[0].imagen}`; break;
-            case 'Leon': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[1].imagen}`; break;
-            case 'Lobo': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[2].imagen}`; break;
-            case 'Oso': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[3].imagen}`; break;
-            case 'Serpiente': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[4].imagen}`; break;
-            case 'Delfin': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[5].imagen}`; break;
-            case 'Cerdo': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[6].imagen}`; break;
-            case 'Caballo': imagenAnimal.src = `${relativePath}/assets/imgs/${animales[7].imagen}`; break;
+        for(let i = 0; i < animales.length; i++){
+            if(opcionElegida == animales[i].name){
+                imagenAnimal.src = (`${relativePath}/assets/imgs/${animales[i].imagen}`);
+            }            
         }
         document.querySelector('#preview').appendChild(imagenAnimal);
     }
@@ -106,16 +107,11 @@ export default (function ModuloFormulario() {
         opcionElegida = nuevaOpcionElegida;
     }
 
-    function setSrcSonidoSegunAnimal(animal) {
-        switch (animal.getNombre().trim()) {
-            case 'Águila': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[0].sonido}`; break;
-            case 'León': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[1].sonido}`; break;
-            case 'Lobo': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[2].sonido}`; break;
-            case 'Oso': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[3].sonido}`; break;
-            case 'Serpiente': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[4].sonido}`; break;
-            case 'Delfín': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[5].sonido}`; break;
-            case 'Cerdo': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[6].sonido}`; break;
-            case 'Caballo': animal.getSonido().src = `${relativePath}/assets/sounds/${animales[7].sonido}`; break;
+    function setSrcDelSonidoDelAnimal(animal){
+        for(let i = 0; i < animales.length; i++){
+            if(animal.getNombre() === animales[i].name){
+                animal.getSonido().src = `${relativePath}/assets/sounds/${animales[i].sonido}`;
+            }            
         }
     }
     return { iniciarEventosClick };

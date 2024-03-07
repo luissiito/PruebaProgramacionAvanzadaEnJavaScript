@@ -2,12 +2,12 @@
   "animales": [
     
     {
-      "name": "Aguila",
+      "name": "Águila",
       "imagen": "Aguila.png",
       "sonido":"Chillido.mp3"
     },
     {
-      "name": "Leon",
+      "name": "León",
       "imagen": "Leon.png",
       "sonido":"Rugido.mp3"
     },
@@ -27,7 +27,7 @@
       "sonido":"Siseo.mp3"
     },  
     {
-      "name": "Delfin",
+      "name": "Delfín",
       "imagen": "Delfin.jpg",
       "sonido":"Silbido.mp3"
     },  
@@ -40,6 +40,21 @@
       "name": "Caballo",
       "imagen": "Caballo.png",
       "sonido":"Relincho.mp3"
+    }, 
+    {
+      "name": "Zebra",
+      "imagen": "Zebra.jpg",
+      "sonido":"RelinchoZebra.mp3"
+    }, 
+    {
+      "name": "Jirafa",
+      "imagen": "Jirafa.avif",
+      "sonido":"Zumbar.mp3"
+    }  , 
+    {
+      "name": "Gato",
+      "imagen": "Gato.png",
+      "sonido":"Miau.mp3"
     }   
   ]
 }
