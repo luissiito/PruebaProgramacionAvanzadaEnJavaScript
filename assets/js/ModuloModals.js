@@ -1,4 +1,5 @@
 import ModuloCards from './ModuloCards.js';
+import ModuloFormulario from './ModuloFormulario.js';
 
 export default (function ModuloModals(){
     const modalBody = document.querySelector('.modal-body');
@@ -20,7 +21,13 @@ export default (function ModuloModals(){
 
     function crearBotonCerrar(){
         botonCerrar.textContent = 'CERRAR';
-        botonCerrar.classList.add('botonCerrar');    
+        botonCerrar.className += 'boton botonCerrar';  
+        botonCerrar.addEventListener('click', ()=> ocultarModal());
+    }
+
+    function crearBotonEntendido(){
+        botonCerrar.textContent = 'ENTENDIDO';
+        botonCerrar.className += 'boton botonEntendido';  
         botonCerrar.addEventListener('click', ()=> ocultarModal());
     }
 
@@ -36,6 +43,13 @@ export default (function ModuloModals(){
         showModal();
     }
 
+    function mostrarModalDeInformacion(){
+        h5Mensaje.textContent = 'ANIMAL AGREGADO A LISTA DE ANIMALES EN OBSERVACIÓN';
+        limpiarModalBody();
+        crearBotonEntendido();
+        modalBody.append(h5Mensaje, botonCerrar);
+        showModal();
+    }
     function mostrarModalDeErrorDeNombre(){
         h5Mensaje.textContent = 'DEBES SELECCIONAR UN ANIMAL DE LA LISTA';
         prepararModal();
@@ -70,5 +84,6 @@ export default (function ModuloModals(){
         document.querySelector('.modal').classList.remove('ocultarModal');
     }
 
-    return { cargarInformacionAlModal, mostrarModalDeErrorDeNombre, mostrarModalDeErrorDeEdad, mostrarModalDeErrorDeComentario, limpiarModalBody, mostrarModal};
+    return { cargarInformacionAlModal, mostrarModalDeErrorDeNombre, mostrarModalDeErrorDeEdad,
+         mostrarModalDeErrorDeComentario, mostrarModalDeInformacion, limpiarModalBody, mostrarModal};
 })();

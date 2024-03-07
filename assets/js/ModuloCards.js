@@ -11,7 +11,6 @@ export default (function ModuloCards(){
 
     function insertarCard(animal){    
         const card = new Card(animal);
-        card.setAnimal(animal);
         card.getContenedor().classList.add('card');
         card.getContenedor().setAttribute('id', contadorDeCards);
         card.getImagen().src = animal.getSrcDeLaImagen();

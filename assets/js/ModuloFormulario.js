@@ -35,6 +35,7 @@ export default (function ModuloFormulario() {
                 opcionElegida = selectEdadEstimada.options[selectEdadEstimada.selectedIndex].text;
                 if (getOpcionElegida() != 'Seleccione un rango de años') {
                     if (comentarios.value != '') {
+                        ModuloModals.mostrarModalDeInformacion();
                         ModuloCards.insertarCard(animal);
                         limpiarFormulario();
                         setOpcionElegida('Seleccione un animal');
@@ -96,8 +97,9 @@ export default (function ModuloFormulario() {
 
     function mostrarImagenAnimalEnElPreview(opcionElegida) {
         for(let i = 0; i < animales.length; i++){
-            if(opcionElegida == animales[i].name){
+            if(opcionElegida === animales[i].name){
                 imagenAnimal.src = (`${relativePath}/assets/imgs/${animales[i].imagen}`);
+                break;
             }            
         }
         document.querySelector('#preview').appendChild(imagenAnimal);
@@ -111,8 +113,9 @@ export default (function ModuloFormulario() {
         for(let i = 0; i < animales.length; i++){
             if(animal.getNombre() === animales[i].name){
                 animal.getSonido().src = `${relativePath}/assets/sounds/${animales[i].sonido}`;
+                break;
             }            
         }
     }
-    return { iniciarEventosClick };
+    return { iniciarEventosClick, limpiarFormulario };
 })();
