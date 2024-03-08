@@ -10,11 +10,14 @@ export default (function ModuloCards(){
     }
 
     function insertarCard(animal){    
-        const card = new Card(animal);
+        const card = new Card();
         card.getContenedor().classList.add('card');
         card.getContenedor().setAttribute('id', contadorDeCards);
-        card.getImagen().src = animal.getSrcDeLaImagen();
         card.getContenedor().addEventListener('click', function(){ModuloModals.mostrarModal(this)});
+        card.getImagen().src = animal.getSrcDeLaImagen();
+        card.setAnimal(animal);
+        card.setAudio(animal.getSonido());
+        card.armarCard();
         contadorDeCards++;
         cards.push(card);
         document.querySelector('#Animales').appendChild(card.getContenedor());

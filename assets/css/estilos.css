@@ -129,7 +129,7 @@ textarea{
   color: white;
 }
 .modal .botonEntendido:hover{
-  color: purple;
+  color: red;
 }
 .modal.showModal{
   display: block;
@@ -148,7 +148,7 @@ textarea{
   outline-width: .14em ;
 }
 .modal-body:hover .botonCerrar{
-  background-color: #db5eb4be;
+  background-color: greenyellow;
 }
 .modal-body:hover h5{
   color: white;

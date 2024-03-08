@@ -8,7 +8,7 @@ export default (function ModuloModals(){
     const pEdad = document.createElement('p');
     const h5Comentarios = document.createElement('h5');
     const pComentarios = document.createElement('p');
-    const botonCerrar = document.createElement('button');
+    const botonDelModal = document.createElement('button');
 
     function cargarInformacionAlModal(idCard){ 
         imagen.src = ModuloCards.getCards()[idCard].getAnimal().getSrcDeLaImagen();
@@ -16,19 +16,19 @@ export default (function ModuloModals(){
         h5Comentarios.textContent = 'Comentarios';
         pComentarios.textContent = ModuloCards.getCards()[idCard].getAnimal().getComentarios();
         crearBotonCerrar();
-        modalBody.append(imagen, pEdad, h5Comentarios, pComentarios, botonCerrar);
+        modalBody.append(imagen, pEdad, h5Comentarios, pComentarios, botonDelModal);
     }
 
     function crearBotonCerrar(){
-        botonCerrar.textContent = 'CERRAR';
-        botonCerrar.className += 'boton botonCerrar';  
-        botonCerrar.addEventListener('click', ()=> ocultarModal());
+        botonDelModal.textContent = 'CERRAR';
+        botonDelModal.className += 'boton botonCerrar';  
+        botonDelModal.addEventListener('click', ()=> ocultarModal());
     }
 
     function crearBotonEntendido(){
-        botonCerrar.textContent = 'ENTENDIDO';
-        botonCerrar.className += 'boton botonEntendido';  
-        botonCerrar.addEventListener('click', ()=> ocultarModal());
+        botonDelModal.textContent = 'ENTENDIDO';
+        botonDelModal.className += 'boton botonEntendido';  
+        botonDelModal.addEventListener('click', ()=> ocultarModal());
     }
 
     function limpiarModalBody(){
@@ -44,10 +44,10 @@ export default (function ModuloModals(){
     }
 
     function mostrarModalDeInformacion(){
-        h5Mensaje.textContent = 'ANIMAL AGREGADO A LISTA DE ANIMALES EN OBSERVACIÓN';
+        h5Mensaje.textContent = 'ANIMAL AGREGADO A LISTA DE ANIMALES EN INVESTIGACIÓN';
         limpiarModalBody();
         crearBotonEntendido();
-        modalBody.append(h5Mensaje, botonCerrar);
+        modalBody.append(h5Mensaje, botonDelModal);
         showModal();
     }
     function mostrarModalDeErrorDeNombre(){
@@ -71,7 +71,7 @@ export default (function ModuloModals(){
     function prepararModal(){
         limpiarModalBody();
         crearBotonCerrar();
-        modalBody.append(h5Mensaje, botonCerrar);
+        modalBody.append(h5Mensaje, botonDelModal);
     }
        
     function ocultarModal(){   
