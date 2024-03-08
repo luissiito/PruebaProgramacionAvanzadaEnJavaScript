@@ -1,5 +1,5 @@
 import ModuloModals from './ModuloModals.js'
-import Card from './Card.js';
+import Card from '../clases/Card.js';
 
 export default (function ModuloCards(){
     let cards = [];

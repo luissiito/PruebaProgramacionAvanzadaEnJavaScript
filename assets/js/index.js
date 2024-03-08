@@ -1,3 +1,3 @@
-import ModuloApp from './ModuloApp.js';
+import ModuloApp from './modulos/ModuloApp.js';
 
 ModuloApp.iniciarApp();

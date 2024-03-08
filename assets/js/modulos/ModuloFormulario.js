@@ -1,21 +1,23 @@
 
+import data from '../../../animales.json' assert {type: 'json'};
 import ModuloApi from './ModuloApi.js';
 import ModuloCards from './ModuloCards.js';
 import ModuloModals from './ModuloModals.js';
-import Animal from './Animal.js';
-import Aguila from './Aguila.js';
-import Leon from './Leon.js';
-import Lobo from './Lobo.js';
-import Oso from './Oso.js';
-import Serpiente from './Serpiente.js';
-import Caballo from './Caballo.js';
-import Cerdo from './Cerdo.js';
-import Delfin from './Delfin.js';
-import Zebra from './Zebra.js';
-import Jirafa from './Jirafa.js';
-import Gato from './Gato.js';
+import Animal from '../clases/Animal.js';
+import Aguila from '../clases/Aguila.js';
+import Leon from '../clases/Leon.js';
+import Lobo from '../clases/Lobo.js';
+import Oso from '../clases/Oso.js';
+import Serpiente from '../clases/Serpiente.js';
+import Caballo from '../clases/Caballo.js';
+import Cerdo from '../clases/Cerdo.js';
+import Delfin from '../clases/Delfin.js';
+import Zebra from '../clases/Zebra.js';
+import Jirafa from '../clases/Jirafa.js';
+import Gato from '../clases/Gato.js';
 
-const animales = await ModuloApi.getAnimalsFromApi();
+/* const animales = await ModuloApi.getAnimalsFromApi(); */
+const animales = data.animales;
 
 export default (function ModuloFormulario() {
     const botonAgregar = document.querySelector('#btnRegistrar');
