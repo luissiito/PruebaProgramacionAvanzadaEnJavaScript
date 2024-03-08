@@ -77,6 +77,11 @@ export default (function ModuloModals(){
     function ocultarModal(){   
         document.querySelector('.modal').classList.add('ocultarModal');
         document.querySelector('.modal').classList.remove('showModal');
+        removerClasesCssAlBotonDelModal();
+    }
+
+    function removerClasesCssAlBotonDelModal(){
+        botonDelModal.className = ''; 
     }
 
     function showModal(){  
