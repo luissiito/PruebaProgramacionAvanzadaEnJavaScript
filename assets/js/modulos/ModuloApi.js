@@ -1,7 +1,6 @@
 
 export default (function ModuloApi() {
-    const url = `${window.location.protocol}//${window.location.host}/animales.json`;
-    
+    const url = `${window.location.protocol}//${window.location.host}/PruebaProgramacionAvanzadaEnJavaScript/animales.json`;
     async function getAnimalsFromApi() {
         try {
             const response = await fetch(url);
