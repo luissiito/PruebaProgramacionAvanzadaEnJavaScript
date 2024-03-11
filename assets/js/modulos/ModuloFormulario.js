@@ -28,7 +28,7 @@ export default (function ModuloFormulario() {
     let animal = new Animal();
     let imagenAnimal = document.createElement('img');
     let opcionElegida = 'Seleccione un animal';
-    let relativePath = window.location.protocol + "//" + window.location.host;
+    let protocolAndHostPath = window.location.protocol + "//" + window.location.host;
     
     function añadirEventoClickAlBotonAgregar() {
         botonAgregar.addEventListener('click', function () {
@@ -100,7 +100,7 @@ export default (function ModuloFormulario() {
     function mostrarImagenAnimalEnElPreview(opcionElegida) {
         for(let i = 0; i < animales.length; i++){
             if(opcionElegida === animales[i].name){
-                imagenAnimal.src = (`${relativePath}/assets/imgs/${animales[i].imagen}`);
+                imagenAnimal.src = (`${protocolAndHostPath}/PruebaProgramacionAvanzadaEnJavaScript/assets/imgs/${animales[i].imagen}`);
                 break;
             }            
         }
@@ -114,7 +114,7 @@ export default (function ModuloFormulario() {
     function setSrcDelSonidoDelAnimal(animal){
         for(let i = 0; i < animales.length; i++){
             if(animal.getNombre() === animales[i].name){
-                animal.getSonido().src = `${relativePath}/assets/sounds/${animales[i].sonido}`;
+                animal.getSonido().src = `${protocolAndHostPath}/PruebaProgramacionAvanzadaEnJavaScript/assets/sounds/${animales[i].sonido}`;
                 break;
             }            
         }

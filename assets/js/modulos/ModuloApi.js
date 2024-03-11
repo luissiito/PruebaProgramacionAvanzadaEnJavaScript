@@ -1,6 +1,6 @@
 
 export default (function ModuloApi() {
-    const url = `${window.location.protocol}//${window.location.host}/PruebaProgramacionAvanzadaEnJavaScript/animales.json`;
+    const url = `${window.location.protocol}//${window.location.host}/animales.json`;
     async function getAnimalsFromApi() {
         try {
             const response = await fetch(url);
@@ -12,3 +12,5 @@ export default (function ModuloApi() {
     }
     return { getAnimalsFromApi };
 })();
+
+// USAR ESTE MÓDULO SOLAMENTE CUANDO SE REQUIERA OBTENER LA INFORMACIÓN DE MANERA ASÍNCRONA

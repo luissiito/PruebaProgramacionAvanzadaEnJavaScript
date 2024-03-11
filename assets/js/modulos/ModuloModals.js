@@ -50,6 +50,7 @@ export default (function ModuloModals(){
         modalBody.append(h5Mensaje, botonDelModal);
         showModal();
     }
+    
     function mostrarModalDeErrorDeNombre(){
         h5Mensaje.textContent = 'DEBES SELECCIONAR UN ANIMAL DE LA LISTA';
         prepararModal();
